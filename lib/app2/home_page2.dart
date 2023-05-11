@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage2 extends StatefulWidget {
+  
   const HomePage2({ Key? key }) : super(key: key);
 
   @override
@@ -9,6 +10,7 @@ class HomePage2 extends StatefulWidget {
 }
 
 class _HomePage2State extends State<HomePage2> {
+ 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -16,7 +18,7 @@ class _HomePage2State extends State<HomePage2> {
         
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         
-        title: Text('HomePage2'),
+        title: Text('My'),
       ),
       body: Center(
         
@@ -27,15 +29,21 @@ class _HomePage2State extends State<HomePage2> {
             const Text(
               'You have pushed the button this many times:',
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            BlocBuilder<CounterCubit, int>(
+        
+              builder: (context,state) {
+                print('ishtedi');
+                return Text(
+                  '',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                );
+              }
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed:() =>context.read<CounterCubit>().increment(),
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
